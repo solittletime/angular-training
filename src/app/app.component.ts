@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
 
+import { EmployeeLoaderService, Employee } from './employee-loader.service';
+
 @Component({
   selector: 'app-root',
-  template: '',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+  employeeData: Employee[];
+
+  constructor(svc: EmployeeLoaderService) {
+    svc.loadEmployees()
+      .subscribe(employees => this.employeeData = employees);
+  }
 }
