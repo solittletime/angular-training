@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { EmployeeLoaderService, Employee } from './employee-loader.service';
 
 @Component({
   selector: 'app-root',
-  template: '',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+  employeeData: Observable<Employee[]>;
+
+  constructor(svc: EmployeeLoaderService) {
+    this.employeeData = svc.loadEmployees();
+  }
 }
