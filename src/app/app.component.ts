@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
+
+import { CompanyLoader } from './company-loader.service';
 
 @Component({
   selector: 'app-root',
-  template: '',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+  company: Observable<any>;
+  flag = false;
+
+  constructor(loader: CompanyLoader) {
+    // this.company = loader.loadOneCompany().pipe(share());
+    this.company = loader.loadOneCompany().pipe(shareReplay(1));
+  }
 }
