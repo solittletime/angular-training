@@ -1,9 +1,17 @@
 import { Component } from '@angular/core';
 
+// import { CarStateService } from './car-state.service';
+
 @Component({
   selector: 'app-root',
-  template: '',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css']
+  // ,providers: [CarStateService]
 })
 export class AppComponent {
-  title = 'app';
+  cars: any[] = [];
+
+  addOne() {
+    this.cars.push({});
+  }
 }
