@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: '',
+  template: '<manager-cmp></manager-cmp>'
 })
-export class AppComponent {
-  title = 'app';
-}
+export class AppComponent { }
