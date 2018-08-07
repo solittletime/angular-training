@@ -1,16 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { AppComponent } from './app.component';
+import { WeatherScreenComponent } from './weatherScreen';
+import { WeatherPanelComponent } from './weatherPanel';
+import { SecondsToDatePipe } from './secondsToDatePipe';
+
+export const firebaseConfig = {
+  apiKey: '<your-key>',
+  authDomain: '<your-project-authdomain>',
+  storageBucket: '<your-storage-bucket>',
+  messagingSenderId: '<your-messaging-sender-id>',
+
+  databaseURL: 'https://publicdata-weather.firebaseio.com/'
+};
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [WeatherScreenComponent, WeatherPanelComponent, SecondsToDatePipe],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [WeatherScreenComponent]
 })
 export class AppModule { }
