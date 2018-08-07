@@ -1,16 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
+import { CounterDisplayComponent } from './counter-display.component';
+import { appleCounterReducer, AppState, berryCounterReducer } from './state';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CounterDisplayComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StoreModule.forRoot<AppState>({
+      berryCounter: berryCounterReducer,
+      appleCounter: appleCounterReducer
+    })
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
