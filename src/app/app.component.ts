@@ -1,9 +1,17 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { SwService } from './sw.service';
 
 @Component({
   selector: 'app-root',
-  template: '',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+  someNumber: number = 12;
+  team: Observable<any[]>;
+
+  constructor(sw: SwService) {
+    this.team = sw.getList();
+  }
 }
